@@ -1,20 +1,81 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Transmutation of Champions
 
-# Run and deploy your AI Studio app
+A fantasy character generator and deck-building app built with React, Vite, and Express. It generates randomized fantasy heroes, creates AI-powered portrait art and backstory text, and lets you save favorites to a local deck collection.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/2690bf98-6df6-4b9d-9520-4233f55e696c
+- Random fantasy champion generation with class, race, origin, trait, and affinity
+- AI portrait generation using Gemini when a key is configured
+- AI backstory generation with a procedural fallback if the API is unavailable
+- Recent summon history for quick re-selection
+- Local deck persistence in the browser
+- Responsive fantasy UI inspired by alchemy and tabletop card design
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- React 19
+- Vite
+- Express
+- TypeScript
+- Gemini API via Google GenAI SDK
+- Tailwind-inspired styling with custom fantasy theming
 
+## Prerequisites
+
+- Node.js 18+
+- npm
+- A Gemini API key for portrait and backstory generation
+
+## Local Setup
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+
+2. Create an environment file from the example:
+   ```bash
+   copy .env.example .env
+   ```
+   On macOS/Linux use:
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Add your Gemini API key in `.env`:
+   ```env
+   GEMINI_API_KEY="your_api_key_here"
+   ```
+
+4. Start the app in development mode:
+   ```bash
+   npm run dev
+   ```
+
+5. Open the app in your browser at:
+   ```text
+   http://localhost:3000
+   ```
+
+## Production Build
+
+```bash
+npm run build
+npm run start
+```
+
+The production server serves the built frontend from the `dist` directory and runs the Express API on the same app.
+
+## Notes
+
+- If `GEMINI_API_KEY` is not set, the app still runs and falls back to procedural portrait and backstory generation.
+- The deck is stored in `localStorage` in the browser, so it persists between refreshes on the same browser.
+- The app also exposes health and generation endpoints under `/api/*`.
+
+## Scripts
+
+- `npm run dev` - start the local development server
+- `npm run build` - build the frontend and server bundle
+- `npm run start` - run the production build
+- `npm run preview` - preview the Vite frontend
+- `npm run lint` - TypeScript type check
