@@ -69,12 +69,44 @@
 }
 
 .alchemist-workbench {
+  position: relative;
   background-color: var(--bg-ink);
   background-image:
     radial-gradient(circle at 20% 15%, rgba(212, 163, 89, 0.12), transparent 20%),
     radial-gradient(circle at 75% 30%, rgba(184, 93, 35, 0.11), transparent 24%),
     radial-gradient(circle at 50% 90%, rgba(115, 81, 51, 0.1), transparent 30%),
     linear-gradient(180deg, rgba(15, 11, 8, 0.8), rgba(11, 8, 6, 0.92));
+}
+
+.alchemist-workbench::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 238, 204, 0.015) 0px,
+      rgba(255, 238, 204, 0.015) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+.alchemist-workbench::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 25% 15%, rgba(229, 181, 109, 0.08), transparent 18%),
+    radial-gradient(circle at 72% 28%, rgba(184, 93, 35, 0.08), transparent 20%),
+    radial-gradient(circle at 56% 72%, rgba(79, 70, 51, 0.14), transparent 30%);
+  filter: blur(18px);
+  opacity: 0.9;
 }
 
 .arcane-panel {
