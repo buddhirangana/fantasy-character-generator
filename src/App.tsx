@@ -213,8 +213,20 @@ export default function App() {
           Distill ancient elements, mortal bloodlines, and eldritch disciplines into collectible player cards.
         </p>
 
-        {/* Vintage Inscribed Brass Rule */}
-        <div className="flex items-center justify-center gap-3 mt-4 opacity-50">
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+          {[
+            { icon: Sparkles, label: 'AI Portraits' },
+            { icon: Feather, label: 'Lore Engine' },
+            { icon: Layers, label: 'Deck Builder' },
+          ].map(({ icon: Icon, label }) => (
+            <div key={label} className="status-chip">
+              <Icon className="w-3.5 h-3.5 text-[#D4A359]" />
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-3 mt-5 opacity-60">
           <div className="w-16 h-px bg-gradient-to-r from-transparent to-[#D4A359]" />
           <span className="text-[#D4A359] text-xs">⚗️</span>
           <div className="w-16 h-px bg-gradient-to-l from-transparent to-[#D4A359]" />
@@ -222,7 +234,7 @@ export default function App() {
       </header>
 
       {/* Main Crucible: Transmutation Button & Grimoire Player Card */}
-      <main className="flex-grow flex flex-col items-center justify-center px-2 sm:px-6 relative z-10 w-full max-w-xl mx-auto gap-7 my-3">
+      <main className="arcane-panel flex-grow flex flex-col items-center justify-center px-2 sm:px-6 relative z-10 w-full max-w-xl mx-auto gap-7 my-3">
         {/* Main Action Button - Heavy Brass Inscribed Seal */}
         <div className="w-full flex justify-center">
           <motion.button

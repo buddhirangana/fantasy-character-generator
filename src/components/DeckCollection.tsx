@@ -36,14 +36,13 @@ export default function DeckCollection({
 }: DeckCollectionProps) {
   return (
     <section id="my-deck-section" className="w-full max-w-5xl mx-auto mt-10 mb-8 z-10 relative">
-      {/* Section Title & Deck Counter */}
       <div className="flex items-center justify-between pb-3 mb-5 border-b-2 border-[#5C3E20]">
         <div className="flex items-center gap-2.5">
           <Layers className="w-5 h-5 text-[#D4A359]" />
           <h3 className="text-xl sm:text-2xl font-normal text-[#FFF5E4] font-medieval copper-engraving">
             My Deck Collection
           </h3>
-          <span className="px-2.5 py-0.5 bg-[#2B1B10] border border-[#8C6230] text-xs font-almendra text-[#E5B56D] font-bold">
+          <span className="px-2.5 py-0.5 bg-[#2B1B10] border border-[#8C6230] text-xs font-almendra text-[#E5B56D] font-bold rounded-md">
             {deck.length} {deck.length === 1 ? 'Card' : 'Cards'}
           </span>
         </div>
@@ -52,9 +51,8 @@ export default function DeckCollection({
         </div>
       </div>
 
-      {/* Deck Empty State or Grid Display */}
       {deck.length === 0 ? (
-        <div className="w-full grimoire-parchment border-2 border-dashed border-[#523A21] p-8 text-center shadow-lg">
+        <div className="w-full grimoire-parchment border-2 border-dashed border-[#523A21] p-8 text-center shadow-lg rounded-xl">
           <Layers className="w-10 h-10 text-[#8C6230]/50 mx-auto mb-2" />
           <h4 className="text-base sm:text-lg font-almendra font-bold text-[#E5B56D]">
             Your Deck is Empty
@@ -78,20 +76,18 @@ export default function DeckCollection({
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.25 }}
-                  className={`relative group rounded-xs transition-all duration-300 ${
+                  className={`relative group rounded-xl transition-all duration-300 ${
                     isActive 
                       ? 'ring-2 ring-[#E5B56D] shadow-[0_0_25px_rgba(229,181,109,0.25)]' 
                       : 'hover:border-[#9E733B]'
                   }`}
                 >
-                  {/* Ornate corner pins */}
                   <div className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#D4A359] z-20" />
                   <div className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#D4A359] z-20" />
                   <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#D4A359] z-20" />
                   <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#D4A359] z-20" />
 
-                  {/* Player Card Body */}
-                  <div className="grimoire-parchment border border-[#523A21] p-4 flex flex-col justify-between h-full relative overflow-hidden">
+                  <div className="deck-card-shell grimoire-parchment p-4 flex flex-col justify-between h-full relative overflow-hidden rounded-xl">
                     {/* Header */}
                     <div>
                       <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#3D2C1B] mb-3">

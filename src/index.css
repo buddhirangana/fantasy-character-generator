@@ -1,14 +1,44 @@
 @import "tailwindcss";
 
+:root {
+  color-scheme: dark;
+  --bg-ink: #0d0907;
+  --bg-panel: #17120f;
+  --bg-card: #1c150f;
+  --gold-soft: #d4a359;
+  --gold-strong: #f2be6b;
+  --copper: #b88741;
+  --ember: #d66a2b;
+  --stone: #e8dec8;
+  --muted: #b39d7d;
+  --sage: #93e388;
+  --shadow: rgba(0, 0, 0, 0.58);
+}
+
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: #0E0B08;
-    color: #E8DEC8;
+    background:
+      radial-gradient(circle at top, rgba(212, 163, 89, 0.14), transparent 34%),
+      linear-gradient(180deg, #0d0907 0%, #120d0a 100%);
+    color: var(--stone);
     font-family: 'Cormorant Garamond', 'MedievalSharp', Georgia, serif;
+    min-height: 100vh;
   }
 
   h1, h2, h3, .font-cinzel {
     font-family: 'Cinzel', serif;
+  }
+
+  button {
+    transition: all 180ms ease;
   }
 }
 
@@ -24,35 +54,62 @@
   font-family: 'Almendra', serif;
 }
 
-/* Ancient Alchemist's Workbench Texture & Lighting */
+::selection {
+  background: rgba(212, 163, 89, 0.3);
+  color: #fff8ef;
+}
+
 .alchemist-workbench {
-  background-color: #0E0B08;
-  background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(212, 163, 89, 0.12) 0%, transparent 65%),
-    radial-gradient(ellipse at 85% 90%, rgba(184, 93, 35, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 15% 90%, rgba(76, 114, 115, 0.06) 0%, transparent 50%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(24, 18, 13, 0.6) 0px,
-      rgba(14, 11, 8, 0.85) 4px,
-      rgba(20, 15, 11, 0.6) 8px
-    ),
-    radial-gradient(circle at 50% 50%, rgba(200, 147, 70, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 80px, 28px 28px;
+  background-color: var(--bg-ink);
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(212, 163, 89, 0.12), transparent 20%),
+    radial-gradient(circle at 75% 30%, rgba(184, 93, 35, 0.11), transparent 24%),
+    radial-gradient(circle at 50% 90%, rgba(115, 81, 51, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(15, 11, 8, 0.8), rgba(11, 8, 6, 0.92));
 }
 
-/* Grimoire Parchment Surface */
+.arcane-panel {
+  position: relative;
+  isolation: isolate;
+}
+
+.arcane-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(212, 163, 89, 0.18);
+  pointer-events: none;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 163, 89, 0.45);
+  background: rgba(21, 16, 12, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: #f5d7a4;
+  font-family: 'Almendra', serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.625rem;
+}
+
 .grimoire-parchment {
-  background-color: #17130E;
-  background-image: 
-    radial-gradient(ellipse at 50% 20%, rgba(212, 163, 89, 0.06) 0%, transparent 80%),
-    linear-gradient(180deg, #1C1712 0%, #15110C 50%, #120E0A 100%);
+  background:
+    radial-gradient(circle at top, rgba(212, 163, 89, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(28, 23, 18, 0.98) 0%, rgba(20, 15, 11, 0.96) 100%);
+  border-color: rgba(122, 88, 44, 0.9);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Alchemical Brass Border & Glow */
 .brass-emboss-border {
   border: 1px solid #7A582C;
-  box-shadow: 
+  box-shadow:
     inset 0 0 12px rgba(0, 0, 0, 0.9),
     0 0 0 1px rgba(212, 163, 89, 0.2),
     0 12px 35px -5px rgba(0, 0, 0, 0.9);
@@ -60,4 +117,26 @@
 
 .copper-engraving {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 12px rgba(212, 163, 89, 0.35);
+}
+
+.deck-card-shell {
+  background: linear-gradient(180deg, rgba(24, 18, 13, 0.98), rgba(18, 13, 9, 0.96));
+  border: 1px solid rgba(122, 88, 44, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 30px rgba(0, 0, 0, 0.22);
+}
+
+.deck-card-shell:hover {
+  border-color: rgba(212, 163, 89, 0.85);
+  transform: translateY(-2px);
+}
+
+.gold-divider {
+  background: linear-gradient(90deg, transparent, rgba(212, 163, 89, 0.8), transparent);
+}
+
+@media (max-width: 640px) {
+  .status-chip {
+    letter-spacing: 0.08em;
+    padding-inline: 0.75rem;
+  }
 }
