@@ -91,12 +91,12 @@ export default function CharacterCard({
         exit={{ opacity: 0, y: -14 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
         id="fantasy-player-card"
-        className="w-full grimoire-parchment border-2 border-[#6B4C24] p-5 sm:p-7 text-[#E8DEC8] relative overflow-hidden shadow-[inset_0_0_25px_rgba(0,0,0,0.85)]"
+        className="w-full grimoire-parchment border-2 border-[#6B4C24] p-5 sm:p-7 text-[#E8DEC8] relative overflow-hidden shadow-[inset_0_0_25px_rgba(0,0,0,0.85)] rounded-[28px]"
       >
         {/* Card Header Top Bar: Class Sigil, Bloodline & Actions */}
         <div className="flex items-center justify-between gap-3 pb-3 border-b-2 border-[#4A351E]">
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 bg-[#2B1B10] border border-[#8C6230] text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#E5B56D] font-almendra font-bold flex items-center gap-1.5 shadow-sm">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="px-2 py-0.5 bg-[#2B1B10] border border-[#8C6230] text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#E5B56D] font-almendra font-bold flex items-center gap-1.5 shadow-sm rounded-full">
               <IconComponent className="w-3 h-3 text-[#D4A359]" />
               <span>{character.characterClass.name}</span>
             </span>
@@ -105,7 +105,7 @@ export default function CharacterCard({
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap justify-end">
             {/* Save to Deck Button */}
             <button
               id="save-to-deck-btn"
@@ -136,7 +136,7 @@ export default function CharacterCard({
               id="copy-character-btn"
               type="button"
               onClick={handleCopy}
-              className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#241A12] hover:bg-[#342416] border border-[#8F6531] text-[#D4A359] text-[10px] sm:text-xs uppercase tracking-[0.12em] font-almendra transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#241A12] hover:bg-[#342416] border border-[#8F6531] text-[#D4A359] text-[10px] sm:text-xs uppercase tracking-[0.12em] font-almendra transition-all duration-200 cursor-pointer rounded-full"
               title="Transcribe character details"
             >
               {copied ? (
@@ -159,7 +159,7 @@ export default function CharacterCard({
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
             {/* Portrait Frame */}
             <div className="shrink-0 flex flex-col items-center">
-              <div className="relative w-32 h-32 sm:w-36 sm:h-36 bg-[#0E0B08] border-2 border-[#9E733B] shadow-[inset_0_0_15px_rgba(0,0,0,0.9),0_0_25px_rgba(212,163,89,0.15)] overflow-hidden flex items-center justify-center p-1">
+              <div className="relative w-32 h-32 sm:w-36 sm:h-36 bg-[#0E0B08] border-2 border-[#9E733B] shadow-[inset_0_0_15px_rgba(0,0,0,0.9),0_0_25px_rgba(212,163,89,0.15)] overflow-hidden flex items-center justify-center p-1 rounded-[22px]">
                 {/* Filigree corner brackets */}
                 <div className="absolute top-1 left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-[#D4A359] z-10 pointer-events-none" />
                 <div className="absolute top-1 right-1 w-2.5 h-2.5 border-t-2 border-r-2 border-[#D4A359] z-10 pointer-events-none" />
@@ -212,7 +212,7 @@ export default function CharacterCard({
                     type="button"
                     onClick={onGeneratePortrait}
                     disabled={isGeneratingPortrait}
-                    className="w-full py-1.5 px-2 bg-gradient-to-b from-[#2F2115] to-[#1C130B] border border-[#9E733B] hover:border-[#D4A359] text-[#D4A359] hover:text-[#FFF4DD] text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-almendra font-bold flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer shadow-md disabled:opacity-50"
+                    className="w-full py-1.5 px-2 bg-gradient-to-b from-[#2F2115] to-[#1C130B] border border-[#9E733B] hover:border-[#D4A359] text-[#D4A359] hover:text-[#FFF4DD] text-[9px] sm:text-[10px] uppercase tracking-[0.12em] font-almendra font-bold flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer shadow-md disabled:opacity-50 rounded-full"
                   >
                     <FlaskConical className="w-3 h-3" />
                     <span>Generate Portrait</span>
@@ -223,7 +223,7 @@ export default function CharacterCard({
                     type="button"
                     onClick={onRegeneratePortrait}
                     disabled={isGeneratingPortrait}
-                    className="w-full py-1.5 px-2 bg-gradient-to-b from-[#2F2115] to-[#1C130B] border border-[#9E733B] hover:border-[#D4A359] text-[#D4A359] hover:text-[#FFF4DD] text-[9px] sm:text-[10px] uppercase tracking-[0.1em] font-almendra font-bold flex items-center justify-center gap-1 transition-all duration-200 cursor-pointer shadow-md disabled:opacity-50"
+                    className="w-full py-1.5 px-2 bg-gradient-to-b from-[#2F2115] to-[#1C130B] border border-[#9E733B] hover:border-[#D4A359] text-[#D4A359] hover:text-[#FFF4DD] text-[9px] sm:text-[10px] uppercase tracking-[0.1em] font-almendra font-bold flex items-center justify-center gap-1 transition-all duration-200 cursor-pointer shadow-md disabled:opacity-50 rounded-full"
                   >
                     <RefreshCw className={`w-3 h-3 ${isGeneratingPortrait ? 'animate-spin' : ''}`} />
                     <span>Regenerate Portrait</span>
@@ -296,7 +296,7 @@ export default function CharacterCard({
             </div>
 
             {/* Strength Stat Box */}
-            <div id="stat-strength" className="bg-[#120D09] border border-[#966723] p-2.5 relative shadow-md">
+            <div id="stat-strength" className="bg-[#120D09] border border-[#966723] p-2.5 relative shadow-md rounded-xl">
               <div className="flex items-center justify-center gap-1 text-[#E5B56D] text-[10px] uppercase tracking-wider font-almendra font-bold mb-0.5">
                 <Sword className="w-3.5 h-3.5 text-[#E5B56D]" />
                 <span>Strength</span>
@@ -310,7 +310,7 @@ export default function CharacterCard({
         </div>
 
         {/* Origin Backstory Feature Section */}
-        <div className="my-3.5 bg-[#140E09] border border-[#523A21] p-3.5 relative shadow-inner">
+        <div className="my-3.5 bg-[#140E09] border border-[#523A21] p-3.5 relative shadow-inner rounded-2xl">
           <div className="flex items-center justify-between gap-3 mb-2">
             <div className="flex items-center gap-1.5 text-[#D4A359] text-[10px] sm:text-xs uppercase tracking-[0.2em] font-almendra font-bold">
               <ScrollText className="w-3.5 h-3.5 text-[#D4A359]" />
@@ -323,7 +323,7 @@ export default function CharacterCard({
                 type="button"
                 onClick={onGenerateBackstory}
                 disabled={isGeneratingBackstory}
-                className="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-b from-[#342213] to-[#20140A] border border-[#9E733B] hover:border-[#D4A359] text-[#D4A359] hover:text-[#FFF5E4] text-[10px] uppercase tracking-[0.12em] font-almendra font-bold transition duration-200 cursor-pointer shadow-md disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-b from-[#342213] to-[#20140A] border border-[#9E733B] hover:border-[#D4A359] text-[#D4A359] hover:text-[#FFF5E4] text-[10px] uppercase tracking-[0.12em] font-almendra font-bold transition duration-200 cursor-pointer shadow-md disabled:opacity-50 rounded-full"
               >
                 {isGeneratingBackstory ? (
                   <>
@@ -343,7 +343,7 @@ export default function CharacterCard({
                 type="button"
                 onClick={onRegenerateBackstory}
                 disabled={isGeneratingBackstory}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#20140A] border border-[#7A562A] hover:border-[#D4A359] text-[#D4A359] text-[10px] uppercase tracking-[0.1em] font-almendra font-bold transition duration-200 cursor-pointer disabled:opacity-50"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 bg-[#20140A] border border-[#7A562A] hover:border-[#D4A359] text-[#D4A359] text-[10px] uppercase tracking-[0.1em] font-almendra font-bold transition duration-200 cursor-pointer disabled:opacity-50 rounded-full"
                 title="Rewrite backstory lore"
               >
                 <RefreshCw className={`w-2.5 h-2.5 ${isGeneratingBackstory ? 'animate-spin' : ''}`} />
@@ -377,7 +377,7 @@ export default function CharacterCard({
 
         {/* Weapon & Origin Grid */}
         <div className="grid grid-cols-2 gap-2 text-xs mb-3">
-          <div className="p-2 bg-[#130E0A] border border-[#422F1B]">
+          <div className="p-2 bg-[#130E0A] border border-[#422F1B] rounded-xl">
             <div className="flex items-center gap-1 text-[#D4A359] text-[9px] uppercase tracking-widest mb-0.5 font-almendra font-bold">
               <Sword className="w-3 h-3 text-[#C49346]" />
               <span>Armament</span>
@@ -385,7 +385,7 @@ export default function CharacterCard({
             <span className="text-[#F5EADB] font-medieval text-xs truncate block">{character.characterClass.primaryWeapon}</span>
           </div>
 
-          <div className="p-2 bg-[#130E0A] border border-[#422F1B]">
+          <div className="p-2 bg-[#130E0A] border border-[#422F1B] rounded-xl">
             <div className="flex items-center gap-1 text-[#D4A359] text-[9px] uppercase tracking-widest mb-0.5 font-almendra font-bold">
               <Sparkles className="w-3 h-3 text-[#C49346]" />
               <span>Affinity</span>
@@ -395,7 +395,7 @@ export default function CharacterCard({
         </div>
 
         {/* Inscribed Card Quote */}
-        <div className="flex items-start gap-2 text-[11px] text-[#BFA888] italic border-t border-[#2E2215] pt-2.5">
+        <div className="flex items-start gap-2 text-[11px] text-[#BFA888] italic border-t border-[#2E2215] pt-2.5 rounded-b-2xl">
           <Feather className="w-3 h-3 text-[#D4A359] opacity-70 shrink-0 mt-0.5" />
           <span className="font-serif truncate">"{character.quote.replace(/^"|"$/g, '')}"</span>
         </div>

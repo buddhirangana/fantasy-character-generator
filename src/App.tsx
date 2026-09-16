@@ -191,10 +191,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full alchemist-workbench text-[#E8DEC8] flex flex-col justify-between p-4 sm:p-8 relative overflow-x-hidden selection:bg-[#B88741]/30">
-      {/* Alchemical Ambience / Subtle Ember Glows */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
         <div className="absolute top-10 left-1/4 w-[400px] h-[400px] bg-[#B85D23]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-[#7A582C]/15 rounded-full blur-3xl" />
+        <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#D4A359]/5 to-transparent" />
       </div>
 
       {/* Header Section: The Alchemist's Desk */}
@@ -234,17 +234,31 @@ export default function App() {
       </header>
 
       {/* Main Crucible: Transmutation Button & Grimoire Player Card */}
-      <main className="arcane-panel flex-grow flex flex-col items-center justify-center px-2 sm:px-6 relative z-10 w-full max-w-xl mx-auto gap-7 my-3">
-        {/* Main Action Button - Heavy Brass Inscribed Seal */}
+      <main className="arcane-panel flex-grow flex flex-col items-center justify-center px-2 sm:px-6 relative z-10 w-full max-w-4xl mx-auto gap-7 my-3">
+        <div className="w-full ritual-console rounded-[28px] p-3 sm:p-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+            {[
+              { icon: Dices, label: 'Summon', active: true },
+              { icon: FlaskConical, label: 'Forge', active: false },
+              { icon: Layers, label: 'Archive', active: false },
+            ].map(({ icon: Icon, label, active }) => (
+              <div key={label} className={`ritual-step flex items-center gap-2 px-3 py-2 rounded-full min-w-[120px] justify-center ${active ? 'text-[#F5DCC1] border-[#D4A359]/70' : 'text-[#B39D7D]'}`}>
+                <Icon className={`w-4 h-4 ${active ? 'text-[#D4A359]' : 'text-[#7E6546]'}`} />
+                <span className="text-[10px] uppercase tracking-[0.24em] font-almendra">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="w-full flex justify-center">
           <motion.button
             id="generate-character-btn"
             type="button"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98, y: 1 }}
+            whileHover={{ scale: 1.01, y: -2 }}
+            whileTap={{ scale: 0.99, y: 1 }}
             onClick={handleGenerate}
             disabled={isRolling}
-            className="w-full sm:w-auto px-10 py-4 bg-gradient-to-b from-[#3D2615] via-[#2A180C] to-[#1A0E06] border-2 border-[#B88741] hover:border-[#F2BE6B] text-[#FFF4DE] text-sm sm:text-base uppercase tracking-[0.18em] font-medieval flex items-center justify-center gap-3 transition-all duration-200 cursor-pointer shadow-[0_6px_30px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.15)] group"
+            className="w-full sm:w-auto px-10 py-4 bg-gradient-to-b from-[#3D2615] via-[#2A180C] to-[#1A0E06] border-2 border-[#B88741] hover:border-[#F2BE6B] text-[#FFF4DE] text-sm sm:text-base uppercase tracking-[0.18em] font-medieval flex items-center justify-center gap-3 transition-all duration-200 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.7),0_0_0_1px_rgba(212,163,89,0.2),inset_0_1px_2px_rgba(255,255,255,0.15)] group rounded-2xl"
           >
             <motion.div
               animate={isRolling ? { rotate: 360 } : { rotate: 0 }}
@@ -280,7 +294,7 @@ export default function App() {
 
         {/* Recent Transmutations Chronicle */}
         {history.length > 0 && (
-          <div className="w-full grimoire-parchment border border-[#523A21] p-3.5 relative shadow-lg">
+          <div className="w-full ritual-console border rounded-[22px] p-3.5 relative shadow-lg">
             <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#D4A359] mb-2.5 font-almendra font-bold">
               <History className="w-3 h-3 text-[#D4A359]" />
               <span>Recent Summon History</span>
@@ -291,14 +305,14 @@ export default function App() {
                   key={hist.id}
                   type="button"
                   onClick={() => handleSelectHistorical(hist)}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-[#120E0A] hover:bg-[#211810] text-[#E8DEC8] hover:text-[#FFF5E4] border border-[#47331D] hover:border-[#D4A359] transition duration-200 cursor-pointer shadow-xs"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 text-xs bg-[#120E0A]/90 hover:bg-[#211810] text-[#E8DEC8] hover:text-[#FFF5E4] border border-[#47331D] hover:border-[#D4A359] transition duration-200 cursor-pointer shadow-sm rounded-full"
                 >
                   {hist.portraitUrl ? (
                     <img
                       src={hist.portraitUrl}
                       alt={hist.name}
                       referrerPolicy="no-referrer"
-                      className="w-4 h-4 rounded-xs object-cover border border-[#D4A359]/50"
+                      className="w-4 h-4 rounded-full object-cover border border-[#D4A359]/50"
                     />
                   ) : (
                     <RotateCcw className="w-2.5 h-2.5 text-[#D4A359] opacity-70" />
@@ -322,7 +336,7 @@ export default function App() {
 
       {/* Alchemist's Manuscript Footer */}
       <footer className="pt-5 pb-3 sm:pb-6 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-3 text-center sm:text-left relative z-10 border-t border-[#291D12] max-w-5xl mx-auto w-full text-[#9E8A70]">
-        <div className="text-[10px] uppercase tracking-widest leading-relaxed font-almendra">
+        <div className="rounded-full border border-[#553E22] bg-[#120d0a]/70 px-3 py-1.5 text-[10px] uppercase tracking-widest leading-relaxed font-almendra">
           Codex Alchimia: Opus Magnum VII <br />
           Player Card Deck & Archival Chamber
         </div>
