@@ -19,7 +19,7 @@ export default function App() {
   const [isRolling, setIsRolling] = useState<boolean>(false);
   const [isGeneratingPortrait, setIsGeneratingPortrait] = useState<boolean>(false);
   const [isGeneratingBackstory, setIsGeneratingBackstory] = useState<boolean>(false);
-  
+
   // My Deck state persisted locally
   const [deck, setDeck] = useState<Character[]>(() => {
     try {
@@ -208,7 +208,7 @@ export default function App() {
         <h1 className="text-3xl sm:text-5xl font-normal text-[#FFF5E4] font-medieval copper-engraving tracking-tight">
           Transmutation of Champions
         </h1>
-        
+
         <p className="text-sm sm:text-base font-almendra italic text-[#C9B496] mt-2 max-w-md mx-auto">
           Distill ancient elements, mortal bloodlines, and eldritch disciplines into collectible player cards.
         </p>
@@ -337,12 +337,11 @@ export default function App() {
       {/* Alchemist's Manuscript Footer */}
       <footer className="pt-5 pb-3 sm:pb-6 px-4 sm:px-12 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-3 text-center sm:text-left relative z-10 border-t border-[#291D12] max-w-5xl mx-auto w-full text-[#9E8A70]">
         <div className="rounded-full border border-[#553E22] bg-[#120d0a]/70 px-3 py-1.5 text-[10px] uppercase tracking-widest leading-relaxed font-almendra">
-          Codex Alchimia: Opus Magnum VII <br />
-          Player Card Deck & Archival Chamber
+          <span>From Lead to Legend  •  Bound by Quintessence</span>
         </div>
         <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-[#D4A359]/70 font-almendra">
           <Feather className="w-3 h-3 opacity-60" />
-          <span>From Lead to Legend • Bound by Quintessence</span>
+          <span>Developed by <a href="https://github.com/buddhirangana" target="_blank" rel="noopener noreferrer" className="hover:underline">Buddhi Rangana</a></span>
         </div>
       </footer>
     </div>
